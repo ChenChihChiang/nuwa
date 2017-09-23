@@ -3,4 +3,4 @@
    become: true
    roles:
      - uat-common
-     - docker-ce
+     - uat-docker-ce
