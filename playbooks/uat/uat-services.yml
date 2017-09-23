@@ -1,0 +1,6 @@
+---
+ - hosts: uat-services
+   become: true
+   roles:
+     - uat-common
+     - docker-ce

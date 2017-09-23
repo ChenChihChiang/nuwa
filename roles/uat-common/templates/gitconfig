@@ -1,0 +1,2 @@
+[http]
+	proxy = http://uat-nginx:3128

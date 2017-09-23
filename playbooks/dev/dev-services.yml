@@ -1,0 +1,6 @@
+---
+ - hosts: dev-services
+   become: true
+   roles:
+     - dev-common
+     - docker-ce

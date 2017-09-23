@@ -1,0 +1,5 @@
+---
+ - hosts: dev-nginx
+   become: true
+   roles:
+     - dev-nginx-fetch

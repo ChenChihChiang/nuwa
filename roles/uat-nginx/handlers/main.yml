@@ -1,0 +1,5 @@
+---
+# handlers file for uat-nginx
+
+- name: Reload nginx configuration
+  service: name=nginx state=reloaded enabled=yes

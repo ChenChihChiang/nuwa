@@ -1,0 +1,5 @@
+---
+ - hosts: uat-bastion
+   become: true
+   roles:
+     - uat-bastion

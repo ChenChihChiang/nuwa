@@ -1,0 +1,7 @@
+---
+ - hosts: dev-nginx
+   become: true
+   roles:
+     - dev-common
+     - dev-nginx
+     - dev-squid

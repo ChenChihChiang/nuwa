@@ -1,0 +1,8 @@
+---
+ - hosts: dev-services
+   become: true
+   tasks:
+
+    - name: make sure docker is running
+      service: name=docker state=reloaded enabled=yes
+

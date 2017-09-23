@@ -1,0 +1,6 @@
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+10.0.0.10   uat-bastion
+10.0.1.10   uat-nginx
+10.0.100.10 uat-services
+10.0.101.10 uat-database

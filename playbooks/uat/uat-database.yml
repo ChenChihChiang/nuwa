@@ -1,0 +1,6 @@
+---
+ - hosts: uat-database
+   become: true
+   roles:
+     - uat-common
+     - docker-ce

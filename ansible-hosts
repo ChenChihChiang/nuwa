@@ -1,0 +1,23 @@
+[uat-bastion-group]
+uat-bastion ansible_ssh_host=uat-bastion ansible_ssh_port=10001
+
+[uat-reverse-proxy-group]
+uat-proxy ansible_ssh_host=uat-reverse-proxy
+
+[uat-services-group]
+uat-services ansible_ssh_host=uat-services
+
+[uat-database-group]
+uat-database ansible_ssh_host=uat-database
+
+[dev-bastion-group]
+dev-bastion ansible_ssh_host=dev-bastion ansible_ssh_port=10001
+
+[dev-nginx-group]
+dev-nginx ansible_ssh_host=dev-nginx
+
+[dev-services-group]
+dev-services ansible_ssh_host=dev-services
+
+[dev-database-group]
+dev-database ansible_ssh_host=dev-database

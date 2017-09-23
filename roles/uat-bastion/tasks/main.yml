@@ -1,0 +1,21 @@
+---
+# tasks file for uat-bastion
+
+- name: add backend group
+  group:
+    name: backend
+    state: present
+
+- name: add several users
+  user:
+    name: "{{ item.name }}"
+    shell: /bin/bash
+    state: present
+    groups: "{{ item.groups }}"
+  with_items:
+    - { name: 'john',   groups: 'backend,wheel' }
+    - { name: 'daniel', groups: 'backend,wheel' }
+    - { name: 'jason',  groups: 'backend,wheel' }
+    - { name: 'eric',   groups: 'backend,wheel' }
+
+- include: uat-bastion-nat.yml 

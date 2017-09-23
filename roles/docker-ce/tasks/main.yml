@@ -1,0 +1,36 @@
+---
+# tasks file for docker-ce
+
+- name: Install Docker prequest package
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - yum-utils
+    - device-mapper-persistent-data
+    - lvm2
+
+- name: Add Docker CE repositoey
+  command: "{{ item }}" 
+  with_items:
+    - yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+    - yum-config-manager --enable docker-ce-edge
+    - yum-config-manager --enable docker-ce-test
+
+- name: Install Docker package
+  yum:
+    name: docker-ce
+    state: present
+
+- name: Mkdir docker config directory
+  file: 
+    path: /etc/systemd/system/docker.service.d/
+    state: directory
+    mode: 755
+
+- name: Copy docker config file to client
+  template: src=http-proxy.conf dest=/etc/systemd/system/docker.service.d/http-proxy.conf
+        owner=root group=root mode=0644
+
+- name: Make sure docker is running
+  service: name=docker state=started enabled=yes

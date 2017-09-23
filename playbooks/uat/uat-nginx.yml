@@ -1,0 +1,7 @@
+---
+ - hosts: uat-nginx
+   become: true
+   roles:
+     - uat-common
+     - uat-nginx
+     - uat-squid
