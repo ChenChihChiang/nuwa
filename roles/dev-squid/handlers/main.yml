@@ -1,0 +1,5 @@
+---
+# handlers file for dev-squid
+
+- name: Restart squid
+  service: name=squid state=reloaded enabled=yes

@@ -1,0 +1,2 @@
+[http]
+	proxy = http://dev-nginx:3128

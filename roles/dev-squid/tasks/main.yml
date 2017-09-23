@@ -1,0 +1,15 @@
+---
+# tasks file for dev-squid
+
+- name: Install squid
+  yum:
+    name: squid
+    state: present
+
+- name: Copy squid config file to client
+  template: src=squid.conf dest=/etc/squid/squid.conf
+        owner=root group=root mode=0644
+  notify: Restart squid
+
+- name: Make sure squid is running
+  service: name=squid state=started enabled=yes

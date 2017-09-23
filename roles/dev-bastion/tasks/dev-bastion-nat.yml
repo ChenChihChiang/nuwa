@@ -1,3 +1,4 @@
+
 - name: modify ip forward configuration file
   template: src=50-default.conf dest=/usr/lib/sysctl.d/50-default.conf
 
@@ -11,29 +12,29 @@
     out_interface: eth0
     jump: MASQUERADE
 
-- name: Redirect uat-nginx
+- name: redirect dev-nginx
   iptables:
     table: nat
     chain: PREROUTING
     protocol: tcp
     destination_port: 10002
     jump: DNAT
-    to_destination: 10.0.1.10:22
+    to_destination: 10.1.1.10:22
 
-- name: Redirect uat-services
+- name: redirect dev-services
   iptables:
     table: nat
     chain: PREROUTING
     protocol: tcp
     destination_port: 10003
     jump: DNAT
-    to_destination: 10.0.100.10:22
+    to_destination: 10.1.100.10:22
 
-- name: Redirect uat-database
+- name: redirect dev-database
   iptables:
     table: nat
     chain: PREROUTING
     protocol: tcp
     destination_port: 10004
     jump: DNAT
-    to_destination: 10.0.101.10:22
+    to_destination: 10.1.101.10:22

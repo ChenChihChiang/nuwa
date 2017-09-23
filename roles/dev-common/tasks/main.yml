@@ -1,0 +1,52 @@
+---
+# tasks file for dev-common
+
+- name: Copy wgetrc file to client
+  template: src=wgetrc dest=/etc/wgetrc
+        owner=root group=root mode=0644
+
+- name: Copy profile file to client
+  template: src=profile dest=/etc/profile
+        owner=root group=root mode=0644
+
+- name: Copy yum config file to client
+  template: src=yum.conf dest=/etc/yum.conf
+        owner=root group=root mode=0644
+
+- name: Dev Git proxy
+  template: src=gitconfig dest=/root/.gitconfig
+        owner=root group=root mode=0644
+
+- name: Install epel-release
+  yum:
+    name: epel-release 
+    state: present
+
+- name: Copy hosts file to client
+  template: src=hosts dest=/etc/hosts
+        owner=root group=root mode=0644
+
+- name: Install NTP
+  yum:
+    name: ntp
+    state: present
+
+- name: Set timezone 
+  #command: ln -sf /usr/share/zoneinfo/Asia/Taipei /etc/localtime
+  file:
+    src: /usr/share/zoneinfo/Asia/Taipei
+    dest: /etc/localtime
+    owner: root
+    group: root
+    state: link
+
+- name: Correct current time
+  command: /sbin/ntpdate time.stdtime.gov.tw
+
+- name: Copy selinux file to client
+  template: src=config dest=/etc/selinux/config
+        owner=root group=root mode=0644
+
+- name: Disable selinux
+  command: /sbin/setenforce 0
+  when: ansible_selinux.status != 'disabled'

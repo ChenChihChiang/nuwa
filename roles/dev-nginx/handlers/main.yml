@@ -1,0 +1,5 @@
+---
+# handlers file for dev-nginx
+
+- name: Reload nginx configuration
+  service: name=nginx state=reloaded enabled=yes
