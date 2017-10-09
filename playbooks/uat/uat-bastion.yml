@@ -3,3 +3,4 @@
    become: true
    roles:
      - uat-bastion
+     - snmpd

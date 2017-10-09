@@ -5,3 +5,4 @@
      - dev-common
      - dev-nginx
      - dev-squid
+     - snmpd

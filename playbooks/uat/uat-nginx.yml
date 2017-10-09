@@ -5,3 +5,4 @@
      - uat-common
      - uat-nginx
      - uat-squid
+     - snmpd

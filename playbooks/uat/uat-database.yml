@@ -4,3 +4,4 @@
    roles:
      - uat-common
      - uat-docker-ce
+     - snmpd

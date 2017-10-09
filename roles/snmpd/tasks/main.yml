@@ -1,0 +1,15 @@
+---
+# tasks file for snmpd
+
+- name: Install snmpd
+  yum:
+    name: snmpd
+    state: present
+
+- name: Copy snmp config file to client
+  template: src=snmpd.conf dest=/etc/snmp/snmpd.conf
+        owner=root group=root mode=0644
+  notify: Restart snmpd
+
+- name: Make sure snmpd is running
+  service: name=snmpd state=started enabled=yes
